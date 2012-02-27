@@ -9,7 +9,7 @@ if you planing on using the cli, install globally (`-g`)
 #### test.js
     module.exports = [{
       name: 'test',
-      definition: require('def/login'),
+      definition: require('./def/login'),
       processRequest: function(request, state) {
         var data = {
           name: 'user',

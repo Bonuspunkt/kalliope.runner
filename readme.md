@@ -3,7 +3,7 @@ very simple straight forward testrunner, specially targeting testing REST api se
 ## installation
 if you planing on using the cli, install globally (`-g`)
 
-    npm install kalliope.runner
+    npm install https://github.com/Bonuspunkt/kalliope.runner/tarball/master
 
 ### example setup
 #### test.js

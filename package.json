@@ -2,11 +2,9 @@
   "author": "Bonuspunkt",
   "name": "kalliope.runner",
   "version": "0.0.1",
-  "repository": {
-    "url": ""
-  },
+  "repository": "git://github.com/Bonuspunkt/kalliope.runner.git",
   "bin": "./bin/cli.js",
-  "main": "./bin/runner",
+  "main": "./lib/runner",
   "engines": {
     "node": ">=0.6"
   },

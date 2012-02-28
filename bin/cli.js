@@ -1,9 +1,11 @@
 #!/usr/bin/env node
+var fs = require('fs');
 var path = require('path');
+var util = require('util');
 var runner = require('../lib/runner');
 
 var filesToLoad = process.argv.splice(2).map(function(file) {
-  return path.combine(process.cwd(), file);
+  return path.join(process.cwd(), file);
 });
 
 if (!filesToLoad.length) {
@@ -23,7 +25,9 @@ function processPath(file) {
     }
 
     if (stats.isFile()) {
-      runner(require(file), console.log);
+      runner.run(require(file), function(result) {
+        console.log(util.inspect(result, false, 10, true))
+      });
     }
   });
 }

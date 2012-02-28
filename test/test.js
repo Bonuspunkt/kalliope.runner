@@ -64,3 +64,60 @@ test('integral test', function(t) {
   });
   
 });
+
+
+test('fail test', function(t) {
+  var server = http.createServer(function(req, res) {
+    res.writeHead(200, { 'content-type': 'text/plain' });
+    res.end('pong');
+  });
+  server.listen(41001);
+
+
+
+  process.nextTick(function() {
+    var tests = [{
+      name: 'test',
+      definition: {
+        request: {
+          host: '127.0.0.1',
+          port: 41001,
+
+          path: '/',
+          method: 'GET'
+        }
+      },
+      processResponse: function(response, stage) {
+        stage.equal(response.statusCode, 300);
+        stage.equal(response.data, 'derp');
+      }
+    },{
+      name: 'test should not be run',
+      definition: {
+        request: {
+          host: '127.0.0.1',
+          port: 41001,
+
+          path: '/',
+          method: 'GET'
+        }
+      },
+      processRequest: function(request, stage) {
+      },
+      processResponse: function(response, stage) {
+        stage.equal(response.statusCode, 300);
+      }
+    }];
+
+    runner.run(tests, function(result) {
+      server.close();
+      t.notOk(result.success, 'test worked');
+
+      // TODO: more asserting
+
+      t.end();
+    });
+
+  });
+  
+});

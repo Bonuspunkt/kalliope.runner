@@ -9,7 +9,7 @@ var filesToLoad = process.argv.splice(2).map(function(file) {
 });
 
 if (!filesToLoad.length) {
-  console.log('use:\n  runner <file/dir> [file/dir] ...');
+  console.log('use:\n  kalliope.runner <file/dir> [file/dir] ...');
   return;
 }
 
@@ -26,7 +26,7 @@ function processPath(file) {
 
     if (stats.isFile()) {
       runner.run(require(file), function(result) {
-        console.log(util.inspect(result, false, 10, true))
+        console.log(util.inspect(result, false, 3, true));
       });
     }
   });

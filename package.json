@@ -1,16 +1,19 @@
 {
-  "author": "Bonuspunkt",
   "name": "kalliope.runner",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "author": "Bonuspunkt",
+  "desciption": "very simple straight forward testrunner, specially targeting testing REST api server",
   "repository": "git://github.com/Bonuspunkt/kalliope.runner.git",
+  
   "bin": "./bin/cli.js",
   "main": "./lib/runner",
-  "engines": {
-    "node": ">=0.6"
-  },
+
   "scripts": {
-    "start": "node bin/cli.js",
-    "test": "node test/test.js"
+    "test": "tap ./test"
+  },
+  
+  "engines": {
+    "node": ">=0.4"
   },
   "dependencies": {
     "commander": "~0.5.2"

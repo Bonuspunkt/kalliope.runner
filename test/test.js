@@ -113,7 +113,19 @@ test('fail test', function(t) {
       server.close();
       t.notOk(result.success, 'test worked');
 
-      // TODO: more asserting
+      var log = result.log;
+      t.equal(log.length, 3, 'only 3 log entries');
+      t.equal(log[0].type, 'log')
+
+      var assertLog = log[1];
+      t.equal(assertLog.type, 'assert');
+      t.notOk(assertLog.ok);
+      t.equal(assertLog.method, 'equal');
+      t.equal(assertLog.args[0], 200);
+      t.equal(assertLog.args[1], 300);
+
+
+      t.equal(log[2].type, 'log')
 
       t.end();
     });

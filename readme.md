@@ -1,4 +1,4 @@
-# kalliope.runner
+# kalliope.runner [![Build Status](https://secure.travis-ci.org/Bonuspunkt/kalliope.runner.png)](http://travis-ci.org/Bonuspunkt/kalliope.runner)
 very simple straight forward testrunner, specially targeting testing REST api server
 ## installation
 if you planing on using the cli, install globally (`-g`)

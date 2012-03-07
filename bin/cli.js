@@ -2,7 +2,7 @@
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
-var runner = require('../lib/runner');
+var Runner = require('../lib/runner');
 
 var filesToLoad = process.argv.splice(2).map(function(file) {
   return path.join(process.cwd(), file);
@@ -13,23 +13,31 @@ if (!filesToLoad.length) {
   return;
 }
 
-function processPath(file) {
+function processPath(file, recurse) {
   fs.stat(file, function(err, stats) {
     
     if (stats.isDirectory()) {
+      if (!recurse) { return; }
       fs.readdir(file, function(err, dirFiles) {
          dirFiles.forEach(function(dirFile) {
-            processPath(path.join(file, dirFile));
+            processPath(path.join(file, dirFile), !recurse);
          });
       });
     }
 
     if (stats.isFile()) {
-      runner.run(require(file), function(result) {
-        console.log(util.inspect(result, false, 3, true));
+      var testList = require(file);
+      var runner = new Runner(testList);
+      runner.logger.on('log', function(logEntry){
+        console.log(logEntry);
+      });
+      runner.run(function(err) {
+        if (err) { throw err; }
       });
     }
   });
 }
 
-filesToLoad.forEach(processPath);
+filesToLoad.forEach(function(file) {
+  processPath(file, true);
+});

@@ -1,10 +1,7 @@
 {
   "name": "kalliope.runner",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "dependencies": {
-    "commander": {
-      "version": "0.5.2"
-    },
     "tap": {
       "version": "0.2.0",
       "dependencies": {

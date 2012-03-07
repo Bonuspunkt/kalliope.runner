@@ -1,0 +1,7 @@
+{
+  "method": "DELETE",
+  "pathname": "/{:id}",
+  "urlParams": {
+    "id": 1
+  }
+}

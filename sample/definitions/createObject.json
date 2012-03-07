@@ -1,0 +1,11 @@
+{
+  "method": "POST",
+  "pathname": "/",
+  "headers": {
+    "content-type": "application/json"
+  },
+  "body": {
+    "title": "TITLE",
+    "text": "T E X T"
+  }
+}

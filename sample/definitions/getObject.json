@@ -1,0 +1,7 @@
+{
+  "method": "GET",
+  "pathname": "/{:id}",
+  "urlParams": {
+    "id": 1
+  }
+}

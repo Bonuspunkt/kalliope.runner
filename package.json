@@ -3,7 +3,13 @@
   "version": "0.1.0",
   "author": "Bonuspunkt",
   "desciption": "very simple straight forward testrunner, specially targeting testing REST api server",
-  "repository": "git://github.com/Bonuspunkt/kalliope.runner.git",
+  "bugs": { 
+    "url" : "http://github.com/Bonuspunkt/kalliope.runner/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Bonuspunkt/kalliope.runner.git"
+  },
   
   "bin": "./bin/cli.js",
   "main": "./lib/runner",

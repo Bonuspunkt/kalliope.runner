@@ -16,7 +16,7 @@ var server = http.createServer(function(req, res){
 server.listen(port);
 
 process.nextTick(function() {
-  
+
   test('overall', function(t){
     t.plan(6);
 
@@ -62,7 +62,7 @@ test('connection refused calls callback', function(t) {
 
   var testList = {
     tests: [{
-      name: 'query localhost',
+      name: 'query localhost:0',
       prepairRequest: function(request) {
         // port is reserved according to wikipedia
         request.port = 0;
@@ -77,3 +77,18 @@ test('connection refused calls callback', function(t) {
     t.end();
   })
 });
+
+test('prepairRequest assert exception calls callback', function(t) {
+  var testList = {
+    name: 'let\'s not even start a request',
+    tests: [{
+      prepairRequest: function(request, assert) {
+        assert.fail();
+      }
+    }]
+  };
+  new Runner(testList).run(function(err) {
+    t.ok(err, 'error must be present');
+    t.end();
+  })
+})

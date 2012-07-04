@@ -16,7 +16,7 @@ var server = http.createServer(function(req, res){
 server.listen(port);
 
 process.nextTick(function() {
-
+  
   test('overall', function(t){
     t.plan(6);
 
@@ -56,4 +56,24 @@ process.nextTick(function() {
       t.end();
     });
   });
+});
+
+test('connection refused calls callback', function(t) {
+
+  var testList = {
+    tests: [{
+      name: 'query localhost',
+      prepairRequest: function(request) {
+        // port is reserved according to wikipedia
+        request.port = 0;
+      },
+      processResponse: function(response) {
+        t.ok(false, 'process response should not be reached');
+      }
+    }]
+  };
+  new Runner(testList).run(function(err) {
+    t.ok(err, 'error must be present');
+    t.end();
+  })
 });

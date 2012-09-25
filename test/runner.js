@@ -22,7 +22,7 @@ process.nextTick(function() {
 
     var step = 0;
     var testList = {
-      postPrepairRequest: function(request) {
+      postPrepareRequest: function(request) {
         step++;
         t.equal(step, 2);
       },
@@ -33,7 +33,7 @@ process.nextTick(function() {
       tests: [{
         name: 'first',
         definition: { port: port },
-        prepairRequest: function(request, assert, logger) {
+        prepareRequest: function(request, assert, logger) {
           step++;
           t.equal(step, 1)
         },
@@ -63,7 +63,7 @@ test('connection refused calls callback', function(t) {
   var testList = {
     tests: [{
       name: 'query localhost:0',
-      prepairRequest: function(request) {
+      prepareRequest: function(request) {
         // port is reserved according to wikipedia
         request.port = 0;
       },
@@ -78,11 +78,11 @@ test('connection refused calls callback', function(t) {
   })
 });
 
-test('prepairRequest assert exception calls callback', function(t) {
+test('prepareRequest assert exception calls callback', function(t) {
   var testList = {
     name: 'let\'s not even start a request',
     tests: [{
-      prepairRequest: function(request, assert) {
+      prepareRequest: function(request, assert) {
         assert.fail();
       }
     }]

@@ -5,7 +5,7 @@ var settings = require('./settings');
 var cache = Object.create(null);
 
 module.exports = {
-  postPrepairRequest: function(request) {
+  postPrepareRequest: function(request) {
     // sets host & path
     Object.keys(settings).forEach(function(key) {
       request[key] = settings[key];
@@ -48,7 +48,7 @@ module.exports = {
   tests: [{
     name: 'inital is clear',
     definition: require('./definitions/getObject'),
-    prepairRequest: function(request, assert, logger) {
+    prepareRequest: function(request, assert, logger) {
       delete request.urlParams;
     },
     processResponse: function(response, assert, logger) {
@@ -57,7 +57,7 @@ module.exports = {
   }, {
     name: 'add object',
     definition: require('./definitions/createObject'),
-    prepairRequest: function(request, assert, logger) {
+    prepareRequest: function(request, assert, logger) {
 
     },
     processResponse: function(response, assert, logger) {
@@ -68,7 +68,7 @@ module.exports = {
   }, {
     name: 'get object',
     definition: require('./definitions/getObject'),
-    prepairRequest: function(request, assert, logger) {
+    prepareRequest: function(request, assert, logger) {
       request.urlParams.id = cache.object.id;
     },
     processResponse: function(response, assert, logger) {
@@ -78,7 +78,7 @@ module.exports = {
   }, {
     name: 'delete object',
     definition: require('./definitions/deleteObject'),
-    prepairRequest: function(request, assert, logger) {
+    prepareRequest: function(request, assert, logger) {
       request.urlParams.id = cache.object.id;
     },
     processResponse: function(response, assert, logger) {

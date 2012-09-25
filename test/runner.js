@@ -65,7 +65,7 @@ test('connection refused calls callback', function(t) {
       name: 'query localhost:0',
       prepareRequest: function(request) {
         // port is reserved according to wikipedia
-        request.port = 0;
+        request.port = '0';
       },
       processResponse: function(response) {
         t.ok(false, 'process response should not be reached');

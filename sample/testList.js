@@ -31,10 +31,10 @@ module.exports = {
     if (!request.headers || !request.headers['content-type']) { return; }
 
     switch (request.headers['content-type']) {
-      case "application/x-www-form-urlencoded":
+      case 'application/x-www-form-urlencoded':
         request.body = query.stringify(request.body);
         break;
-      case "application/json":
+      case 'application/json':
         request.body = JSON.stringify(request.body);
         break;
     }

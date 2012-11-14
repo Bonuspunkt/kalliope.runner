@@ -5,7 +5,7 @@ test('test error', function(t) {
   t.plan(3);
 
   var logger = new Logger();
-  var message = 'FATALITY'
+  var message = 'FATALITY';
 
   logger.on('log', function(logEntry) {
     t.equal(logEntry.type, 'log');
@@ -21,7 +21,7 @@ test('test warn', function(t) {
   t.plan(3);
 
   var logger = new Logger();
-  var message = 'warning'
+  var message = 'warning';
   logger.on('log', function(logEntry) {
     t.equal(logEntry.type, 'log');
     t.equal(logEntry.level, 'warn');
@@ -36,7 +36,7 @@ test('test info', function(t) {
   t.plan(3);
 
   var logger = new Logger();
-  var message = 'this isn´t really important'
+  var message = 'this isn´t really important';
   logger.once('log', function(logEntry) {
     t.equal(logEntry.type, 'log');
     t.equal(logEntry.level, 'info');
@@ -51,7 +51,7 @@ test('test trace', function(t) {
   t.plan(3);
 
   var logger = new Logger();
-  var message = 'this is to fill your screen with random text'
+  var message = 'this is to fill your screen with random text';
   logger.once('log', function(logEntry) {
     t.equal(logEntry.type, 'log');
     t.equal(logEntry.level, 'trace');

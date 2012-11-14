@@ -6,12 +6,12 @@ var port = 40001;
 var serverHits = 0;
 
 var server = http.createServer(function(req, res){
-  serverHits++;
+  serverHits += 1;
   res.writeHead(200, {
     'content-length': 1,
     'content-type': 'text/plain'
   });
-  res.end('!')
+  res.end('!');
 });
 server.listen(port);
 
@@ -23,30 +23,30 @@ process.nextTick(function() {
     var step = 0;
     var testList = {
       postPrepareRequest: function(request) {
-        step++;
+        step += 1;
         t.equal(step, 2);
       },
       preProcessResponse: function(response) {
-          step++;
-          t.equal(step, 3)
+          step += 1;
+          t.equal(step, 3);
       },
       tests: [{
         name: 'first',
         definition: { port: port },
         prepareRequest: function(request, assert, logger) {
-          step++;
-          t.equal(step, 1)
+          step += 1;
+          t.equal(step, 1);
         },
         processResponse: function(response, assert, logger) {
-          step++;
-          t.equal(step, 4)
+          step += 1;
+          t.equal(step, 4);
         }
       }]
     };
 
     var log = [];
     var runner = new Runner(testList);
-    runner.logger.on('log', function(logEntry) { log.push(logEntry); })
+    runner.logger.on('log', function(logEntry) { log.push(logEntry); });
     runner.run(function(err) {
       t.notOk(err);
 
@@ -75,7 +75,7 @@ test('connection refused calls callback', function(t) {
   new Runner(testList).run(function(err) {
     t.ok(err, 'error must be present');
     t.end();
-  })
+  });
 });
 
 test('prepareRequest assert exception calls callback', function(t) {
@@ -90,5 +90,5 @@ test('prepareRequest assert exception calls callback', function(t) {
   new Runner(testList).run(function(err) {
     t.ok(err, 'error must be present');
     t.end();
-  })
-})
+  });
+});

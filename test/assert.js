@@ -3,7 +3,7 @@ var Logger = require('../lib/logger');
 var asserts = require('../lib/asserts');
 
 test('assert.ok', function(t) {
-  t.plan(9)
+  t.plan(9);
 
   var logger =  new Logger();
   var assert = asserts(logger);

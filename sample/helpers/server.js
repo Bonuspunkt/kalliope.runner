@@ -4,9 +4,9 @@ var util = require('util');
 function request(req, res) {
   var store = this.store;
   var id = parseInt(req.url.substring(1), 10);
-  
+
   switch (req.method) {
-    case "GET":
+    case 'GET':
       var body;
       if (isNaN(id)) {
           body = store;
@@ -27,7 +27,7 @@ function request(req, res) {
       }
       break;
 
-    case "POST":
+    case 'POST':
       var inBuffer = '';
       req.setEncoding('utf8');
       req.on('data', function(data){
@@ -48,7 +48,7 @@ function request(req, res) {
       });
       break;
 
-    case "DELETE":
+    case 'DELETE':
       if (store[id]) {
         delete store[id];
         res.writeHead(200);

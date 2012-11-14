@@ -3,26 +3,26 @@
   "version": "0.1.3",
   "author": "Bonuspunkt",
   "desciption": "very simple straight forward testrunner, specially targeting testing REST api server",
-  "bugs": { 
-    "url" : "http://github.com/Bonuspunkt/kalliope.runner/issues"
+  "bugs": {
+    "url": "http://github.com/Bonuspunkt/kalliope.runner/issues"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/Bonuspunkt/kalliope.runner.git"
   },
-  
   "bin": "./bin/cli.js",
   "main": "./lib/runner",
-
   "scripts": {
-    "test": "tap ./test"
+    "test": "jshint . && tap ./test"
   },
-  
   "engines": {
     "node": ">=0.4"
   },
-  "dependencies": {},
+  "dependencies": {
+    "joinbuffers": "~0.1.1"
+  },
   "devDependencies": {
-    "tap": "~0.2.0"    
+    "tap": "~0.2.0",
+    "jshint": "~0.9.1"
   }
 }

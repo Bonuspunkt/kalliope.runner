@@ -1,4 +1,6 @@
 # kalliope.runner [![Build Status](https://secure.travis-ci.org/Bonuspunkt/kalliope.runner.png)](http://travis-ci.org/Bonuspunkt/kalliope.runner)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Bonuspunkt/kalliope.runner.svg)](https://greenkeeper.io/)
 very simple straight forward testrunner, specially targeting testing REST api server
 ## installation
 if you planing on using the cli, install globally (`-g`)
